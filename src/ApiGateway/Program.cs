@@ -10,8 +10,8 @@ builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange
 
 // Đăng ký Ocelot và Swagger aggregator
 builder.Services.AddOcelot();
-builder.Services.AddSwaggerForOcelot(builder.Configuration)
-                .AddSwaggerGen();
+builder.Services.AddSwaggerForOcelot(builder.Configuration);
+builder.Services.AddSwaggerGen();
 
 // Cấu hình cổng Render (Render sẽ inject PORT vào env)
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";

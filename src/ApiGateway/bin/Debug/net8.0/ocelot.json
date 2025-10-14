@@ -2,11 +2,11 @@
   "Routes": [
     {
       "DownstreamPathTemplate": "/api/auth/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "userservice",
-          "Port": 8080
+          "Host": "bookbridgeuserservice.onrender.com",
+          "Port": 443
         }
       ],
       "UpstreamPathTemplate": "/gateway/auth/{everything}",
@@ -16,11 +16,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/books/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "bookservice",
-          "Port": 8080
+          "Host": "bookbridgebookservice.onrender.com",
+          "Port": 443
         }
       ],
       "UpstreamPathTemplate": "/gateway/books/{everything}",
@@ -30,11 +30,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/bookstores/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "bookstoreservice",
-          "Port": 8080
+          "Host": "bookbridgebookstoreservice.onrender.com",
+          "Port": 443
         }
       ],
       "UpstreamPathTemplate": "/gateway/bookstores/{everything}",
@@ -44,11 +44,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/orders/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "orderservice",
-          "Port": 8080
+          "Host": "bookbridgeorderservice.onrender.com",
+          "Port": 443
         }
       ],
       "UpstreamPathTemplate": "/gateway/orders/{everything}",
@@ -57,7 +57,49 @@
       "Key": "OrderService"
     }
   ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "auth",
+      "Config": [
+        {
+          "Name": "Auth Service",
+          "Version": "v1",
+          "Url": "https://bookbridgeuserservice.onrender.com/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "books",
+      "Config": [
+        {
+          "Name": "Book Service",
+          "Version": "v1",
+          "Url": "https://bookbridgebookservice.onrender.com/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "bookstores",
+      "Config": [
+        {
+          "Name": "Bookstore Service",
+          "Version": "v1",
+          "Url": "https://bookbridgebookstoreservice.onrender.com/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "orders",
+      "Config": [
+        {
+          "Name": "Order Service",
+          "Version": "v1",
+          "Url": "https://bookbridgeorderservice.onrender.com/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:5139"
+    "BaseUrl": "https://bookbridgegateway.onrender.com"
   }
 }
