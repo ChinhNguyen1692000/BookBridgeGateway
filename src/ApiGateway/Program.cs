@@ -5,15 +5,15 @@ using MMLib.SwaggerForOcelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Load cấu hình Ocelot
+// Load Ocelot config
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
-// Đăng ký Ocelot và Swagger aggregator
+// Đăng ký dịch vụ
 builder.Services.AddOcelot();
-builder.Services.AddSwaggerForOcelot(builder.Configuration);
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerForOcelot(builder.Configuration);
 
-// Cấu hình cổng Render (Render sẽ inject PORT vào env)
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 builder.WebHost.ConfigureKestrel(options =>
 {
@@ -24,10 +24,10 @@ var app = builder.Build();
 
 app.UseRouting();
 
-// SwaggerForOcelot UI — đặt trước app.UseOcelot()
+// Swagger UI cho Ocelot
 app.UseSwaggerForOcelotUI(opt =>
 {
-    opt.PathToSwaggerGenerator = "/swagger/docs"; // endpoint sinh docs
+    opt.PathToSwaggerGenerator = "/swagger/docs";
 })
 .UseOcelot()
 .Wait();
