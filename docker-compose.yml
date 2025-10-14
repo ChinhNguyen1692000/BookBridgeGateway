@@ -1,0 +1,17 @@
+
+services:
+  # 5. API Gateway
+  gateway:
+    build:
+      context: .
+      dockerfile: src/ApiGateway/Dockerfile
+    container_name: bookbridge_gateway
+    ports:
+      - "5139:8080"
+    depends_on:
+      - userservice
+      - bookservice
+      - bookstoreservice
+      - orderservice
+volumes:
+  pgadmin_data:
