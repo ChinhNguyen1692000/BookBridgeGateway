@@ -12,7 +12,8 @@
       "UpstreamPathTemplate": "/gateway/auth/{everything}",
       "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
       "Priority": 1,
-      "Key": "UserServiceAuth"
+      "Key": "UserServiceAuth",
+      "SwaggerKey": "auth" 
     },
     {
       "DownstreamPathTemplate": "/api/books/{everything}",
@@ -26,7 +27,8 @@
       "UpstreamPathTemplate": "/gateway/books/{everything}",
       "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
       "Priority": 2,
-      "Key": "BookService"
+      "Key": "BookService",
+      "SwaggerKey": "books"
     },
     {
       "DownstreamPathTemplate": "/api/bookstores/{everything}",
@@ -40,7 +42,8 @@
       "UpstreamPathTemplate": "/gateway/bookstores/{everything}",
       "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
       "Priority": 3,
-      "Key": "BookstoreService"
+      "Key": "BookstoreService",
+      "SwaggerKey": "bookstores"
     },
     {
       "DownstreamPathTemplate": "/api/orders/{everything}",
@@ -54,7 +57,8 @@
       "UpstreamPathTemplate": "/gateway/orders/{everything}",
       "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
       "Priority": 4,
-      "Key": "OrderService"
+      "Key": "OrderService",
+      "SwaggerKey": "orders"
     }
   ],
   "SwaggerEndPoints": [

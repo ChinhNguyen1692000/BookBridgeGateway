@@ -38,6 +38,8 @@ app.UseSwaggerForOcelotUI(opt =>
 {
     // ⚠️ Không dùng RoutePrefix nữa
     opt.PathToSwaggerGenerator = "/swagger/docs";
+    // opt.Use// Ở phiên bản 8.x, bạn nên sử dụng thuộc tính này:
+    // opt.EndPointCollapserBehaviour = "BookBridge API Gateway";
 })
 .UseOcelot()
 .Wait();
