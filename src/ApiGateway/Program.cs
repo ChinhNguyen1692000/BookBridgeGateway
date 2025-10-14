@@ -6,13 +6,20 @@ using Newtonsoft.Json.Linq;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Load Ocelot config
+// Load file cấu hình Ocelot
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
-// Đăng ký dịch vụ
+// Đăng ký các service
 builder.Services.AddOcelot();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+// ✅ Tránh lỗi trùng API description khi merge Swagger
+builder.Services.AddSwaggerGen(c =>
+{
+    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+});
+
+// ✅ Đăng ký SwaggerForOcelot
 builder.Services.AddSwaggerForOcelot(builder.Configuration);
 
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
@@ -23,48 +30,14 @@ builder.WebHost.ConfigureKestrel(options =>
 
 var app = builder.Build();
 
+app.UseDeveloperExceptionPage();
 app.UseRouting();
 
-// Swagger UI cho Ocelot
+// ✅ Dùng SwaggerForOcelot UI
 app.UseSwaggerForOcelotUI(opt =>
 {
+    // ⚠️ Không dùng RoutePrefix nữa
     opt.PathToSwaggerGenerator = "/swagger/docs";
-
-    // Nếu muốn Swagger nằm ở root (http://localhost:8080/)
-    // opt.RoutePrefix = string.Empty;
-
-    // Cấu hình lại upstream Swagger JSON cho bản MMLib v9.x
-    opt.ReConfigureUpstreamSwaggerJson = (ctx, swaggerJson) =>
-    {
-        var swagger = JObject.Parse(swaggerJson);
-
-        // Lấy base URL trong GlobalConfiguration (ocelot.json)
-        var baseUrl = app.Configuration["GlobalConfiguration:BaseUrl"] ?? "";
-
-        // Xác định prefix route (gateway/auth, gateway/books, ...)
-        // Ở bản 9 không còn ApiEndPoint, nên có thể xác định dựa vào đường dẫn request.
-        var path = ctx.Request.Path.ToString().ToLower();
-        var upstreamPathPrefix = "/gateway";
-
-        if (path.Contains("auth"))
-            upstreamPathPrefix = "/gateway/auth";
-        else if (path.Contains("books"))
-            upstreamPathPrefix = "/gateway/books";
-        else if (path.Contains("bookstores"))
-            upstreamPathPrefix = "/gateway/bookstores";
-        else if (path.Contains("orders"))
-            upstreamPathPrefix = "/gateway/orders";
-
-        var fullUrl = $"{baseUrl}{upstreamPathPrefix}";
-
-        swagger.Remove("servers");
-        swagger.Add("servers", new JArray
-        {
-            new JObject { { "url", fullUrl } }
-        });
-
-        return swagger.ToString();
-    };
 })
 .UseOcelot()
 .Wait();
