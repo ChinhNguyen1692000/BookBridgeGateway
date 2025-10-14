@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\check-merge\\bookbridge-backend\\src\\ApiGateway\\ApiGateway.csproj": {}
+    "E:\\My githhub repo(UserSerivce)\\BookBridgeGateway\\src\\ApiGateway\\ApiGateway.csproj": {}
   },
   "projects": {
-    "E:\\check-merge\\bookbridge-backend\\src\\ApiGateway\\ApiGateway.csproj": {
+    "E:\\My githhub repo(UserSerivce)\\BookBridgeGateway\\src\\ApiGateway\\ApiGateway.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\check-merge\\bookbridge-backend\\src\\ApiGateway\\ApiGateway.csproj",
+        "projectUniqueName": "E:\\My githhub repo(UserSerivce)\\BookBridgeGateway\\src\\ApiGateway\\ApiGateway.csproj",
         "projectName": "ApiGateway",
-        "projectPath": "E:\\check-merge\\bookbridge-backend\\src\\ApiGateway\\ApiGateway.csproj",
+        "projectPath": "E:\\My githhub repo(UserSerivce)\\BookBridgeGateway\\src\\ApiGateway\\ApiGateway.csproj",
         "packagesPath": "C:\\Users\\Chinh\\.nuget\\packages\\",
-        "outputPath": "E:\\check-merge\\bookbridge-backend\\src\\ApiGateway\\obj\\",
+        "outputPath": "E:\\My githhub repo(UserSerivce)\\BookBridgeGateway\\src\\ApiGateway\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Chinh\\AppData\\Roaming\\NuGet\\NuGet.Config"
