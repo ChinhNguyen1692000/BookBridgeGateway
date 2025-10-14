@@ -21,7 +21,7 @@
       "SwaggerKey": "auth"
     },
     {
-      "DownstreamPathTemplate": "/active",
+      "DownstreamPathTemplate": "/api/Book/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -29,39 +29,56 @@
           "Port": 443
         }
       ],
-      "UpstreamPathTemplate": "/gateway/books/active",
-      "UpstreamHttpMethod": [
-        "Get"
-      ],
-      "Priority": 2,
-      "Key": "BookServiceActive",
-      "SwaggerKey": "books"
-    },
-    {
-
-      "DownstreamPathTemplate": "/unactive",
-      "UpstreamPathTemplate": "/gateway/books/unactive",
-      "Key": "BookServiceUnactive",
-      "SwaggerKey": "books"
-    },
-    {
-      "DownstreamPathTemplate": "/api/books/{everything}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "bookbridgebookservice.onrender.com",
-          "Port": 443
-        }
-      ],
-      "UpstreamPathTemplate": "/gateway/books/{everything}",
+      "UpstreamPathTemplate": "/gateway/books/book/{everything}",
       "UpstreamHttpMethod": [
         "Post",
         "Get",
         "Put",
         "Delete"
       ],
-      "Priority": 2,
-      "Key": "BookService",
+      "Priority": 3,
+      "Key": "BookService_Book",
+      "SwaggerKey": "books"
+    },
+    {
+      "DownstreamPathTemplate": "/api/BookImage/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "bookbridgebookservice.onrender.com",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/books/image/{everything}",
+      "UpstreamHttpMethod": [
+        "Post",
+        "Get",
+        "Put",
+        "Delete"
+      ],
+      "Priority": 3,
+      "Key": "BookService_Image",
+      "SwaggerKey": "books"
+    },
+    {
+      "DownstreamPathTemplate": "/api/BookType/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "bookbridgebookservice.onrender.com",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/books/type/{everything}",
+      "UpstreamHttpMethod": [
+        "Post",
+        "Get",
+        "Put",
+        "Delete",
+        "Patch"
+      ],
+      "Priority": 3,
+      "Key": "BookService_Type",
       "SwaggerKey": "books"
     },
     {
