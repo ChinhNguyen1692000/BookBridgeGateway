@@ -120,6 +120,26 @@
       "Priority": 4,
       "Key": "OrderService",
       "SwaggerKey": "orders"
+    },
+    {
+      "DownstreamPathTemplate": "/api/cart/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "bookbridgecartservice.onrender.com",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/cart/{everything}",
+      "UpstreamHttpMethod": [
+        "Post",
+        "Get",
+        "Put",
+        "Delete"
+      ],
+      "Priority": 4,
+      "Key": "CartService",
+      "SwaggerKey": "cart"
     }
   ],
   "SwaggerEndPoints": [
@@ -162,6 +182,17 @@
           "Name": "Order Service",
           "Version": "v1",
           "Url": "https://bookbridgeorderservice.onrender.com/swagger/v1/swagger.json",
+          "TakeServersNameAndPortFromConfig": true
+        }
+      ]
+    },
+    {
+      "Key": "cart",
+      "Config": [
+        {
+          "Name": "Cart Service",
+          "Version": "v1",
+          "Url": "https://bookbridgecartservice.onrender.com/swagger/v1/swagger.json",
           "TakeServersNameAndPortFromConfig": true
         }
       ]
