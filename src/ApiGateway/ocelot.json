@@ -140,6 +140,26 @@
       "Priority": 4,
       "Key": "CartService",
       "SwaggerKey": "cart"
+    },
+    {
+      "DownstreamPathTemplate": "/api/review/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "bookbrirdgereviewservice.onrender.com",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/review/{everything}",
+      "UpstreamHttpMethod": [
+        "Post",
+        "Get",
+        "Put",
+        "Delete"
+      ],
+      "Priority": 5,
+      "Key": "ReviewService",
+      "SwaggerKey": "review"
     }
   ],
   "SwaggerEndPoints": [
@@ -193,6 +213,17 @@
           "Name": "Cart Service",
           "Version": "v1",
           "Url": "https://bookbridgecartservice.onrender.com/swagger/v1/swagger.json",
+          "TakeServersNameAndPortFromConfig": true
+        }
+      ]
+    },
+    {
+      "Key": "review",
+      "Config": [
+        {
+          "Name": "Review Service",
+          "Version": "v1",
+          "Url": "https://bookbrirdgereviewservice.onrender.com/swagger/v1/swagger.json",
           "TakeServersNameAndPortFromConfig": true
         }
       ]
