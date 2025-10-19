@@ -23,11 +23,12 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontEnd", policy =>
     {
-        policy.WithOrigins("https://e00d56ad.bookbridge-5ju.pages.dev")
+        policy.WithOrigins("https://e00d56ad.bookbridge-5ju.pages.dev",
+         "http://localhost:5173")
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
-});
+});                                                                 
 
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 builder.WebHost.ConfigureKestrel(options =>
@@ -40,7 +41,7 @@ var app = builder.Build();
 app.UseDeveloperExceptionPage();
 app.UseRouting();
 
-// ✅ Dùng CORS trước khi Ocelot
+// Dùng CORS trước khi Ocelot
 app.UseCors("AllowFrontEnd");
 
 // Swagger UI
