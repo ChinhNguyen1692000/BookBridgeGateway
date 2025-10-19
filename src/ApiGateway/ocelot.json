@@ -4,18 +4,10 @@
       "DownstreamPathTemplate": "/api/auth/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        {
-          "Host": "bookbridgeuserservice.onrender.com",
-          "Port": 443
-        }
+        { "Host": "bookbridgeuserservice.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/auth/{everything}",
-      "UpstreamHttpMethod": [
-        "Post",
-        "Get",
-        "Put",
-        "Delete"
-      ],
+      "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
       "Priority": 1,
       "Key": "UserServiceAuth",
       "SwaggerKey": "auth"
@@ -24,18 +16,10 @@
       "DownstreamPathTemplate": "/api/Book/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        {
-          "Host": "bookbridgebookservice.onrender.com",
-          "Port": 443
-        }
+        { "Host": "bookbridgebookservice.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/books/book/{everything}",
-      "UpstreamHttpMethod": [
-        "Post",
-        "Get",
-        "Put",
-        "Delete"
-      ],
+      "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
       "Priority": 3,
       "Key": "BookService_Book",
       "SwaggerKey": "books"
@@ -44,18 +28,10 @@
       "DownstreamPathTemplate": "/api/BookImage/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        {
-          "Host": "bookbridgebookservice.onrender.com",
-          "Port": 443
-        }
+        { "Host": "bookbridgebookservice.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/books/image/{everything}",
-      "UpstreamHttpMethod": [
-        "Post",
-        "Get",
-        "Put",
-        "Delete"
-      ],
+      "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
       "Priority": 3,
       "Key": "BookService_Image",
       "SwaggerKey": "books"
@@ -64,39 +40,34 @@
       "DownstreamPathTemplate": "/api/BookType/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        {
-          "Host": "bookbridgebookservice.onrender.com",
-          "Port": 443
-        }
+        { "Host": "bookbridgebookservice.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/books/type/{everything}",
-      "UpstreamHttpMethod": [
-        "Post",
-        "Get",
-        "Put",
-        "Delete",
-        "Patch"
-      ],
+      "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete", "Patch" ],
       "Priority": 3,
       "Key": "BookService_Type",
+      "SwaggerKey": "books"
+    },
+    {
+      "DownstreamPathTemplate": "/api/chatbot/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        { "Host": "bookbridgebookservice.onrender.com", "Port": 443 }
+      ],
+      "UpstreamPathTemplate": "/gateway/books/chatbot/{everything}",
+      "UpstreamHttpMethod": [ "Post", "Get" ],
+      "Priority": 3,
+      "Key": "BookService_Chatbot",
       "SwaggerKey": "books"
     },
     {
       "DownstreamPathTemplate": "/api/bookstores/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        {
-          "Host": "bookbridgebookstoreservice.onrender.com",
-          "Port": 443
-        }
+        { "Host": "bookbridgebookstoreservice.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/bookstores/{everything}",
-      "UpstreamHttpMethod": [
-        "Post",
-        "Get",
-        "Put",
-        "Delete"
-      ],
+      "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
       "Priority": 3,
       "Key": "BookstoreService",
       "SwaggerKey": "bookstores"
@@ -105,18 +76,10 @@
       "DownstreamPathTemplate": "/api/orders/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        {
-          "Host": "bookbridgeorderservice.onrender.com",
-          "Port": 443
-        }
+        { "Host": "bookbridgeorderservice.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/orders/{everything}",
-      "UpstreamHttpMethod": [
-        "Post",
-        "Get",
-        "Put",
-        "Delete"
-      ],
+      "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
       "Priority": 4,
       "Key": "OrderService",
       "SwaggerKey": "orders"
@@ -125,18 +88,10 @@
       "DownstreamPathTemplate": "/api/cart/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        {
-          "Host": "bookbridgecartservice.onrender.com",
-          "Port": 443
-        }
+        { "Host": "bookbridgecartservice.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/cart/{everything}",
-      "UpstreamHttpMethod": [
-        "Post",
-        "Get",
-        "Put",
-        "Delete"
-      ],
+      "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
       "Priority": 4,
       "Key": "CartService",
       "SwaggerKey": "cart"
@@ -145,39 +100,13 @@
       "DownstreamPathTemplate": "/api/review/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        {
-          "Host": "bookbrirdgereviewservice.onrender.com",
-          "Port": 443
-        }
+        { "Host": "bookbrirdgereviewservice.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/review/{everything}",
-      "UpstreamHttpMethod": [
-        "Post",
-        "Get",
-        "Put",
-        "Delete"
-      ],
+      "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
       "Priority": 5,
       "Key": "ReviewService",
       "SwaggerKey": "review"
-    },
-    {
-      "DownstreamPathTemplate": "/api/chatbot/{everything}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "bookbridgechatbotservice.onrender.com",
-          "Port": 443
-        }
-      ],
-      "UpstreamPathTemplate": "/gateway/chatbot/{everything}",
-      "UpstreamHttpMethod": [
-        "Post",
-        "Get"
-      ],
-      "Priority": 6,
-      "Key": "ChatbotService",
-      "SwaggerKey": "chatbot"
     }
   ],
   "SwaggerEndPoints": [
@@ -242,17 +171,6 @@
           "Name": "Review Service",
           "Version": "v1",
           "Url": "https://bookbrirdgereviewservice.onrender.com/swagger/v1/swagger.json",
-          "TakeServersNameAndPortFromConfig": true
-        }
-      ]
-    },
-    {
-      "Key": "chatbot",
-      "Config": [
-        {
-          "Name": "Chatbot Service",
-          "Version": "v1",
-          "Url": "https://bookbridgechatbotservice.onrender.com/swagger/v1/swagger.json",
           "TakeServersNameAndPortFromConfig": true
         }
       ]
