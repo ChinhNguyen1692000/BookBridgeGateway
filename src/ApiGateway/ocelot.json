@@ -160,6 +160,24 @@
       "Priority": 5,
       "Key": "ReviewService",
       "SwaggerKey": "review"
+    },
+    {
+      "DownstreamPathTemplate": "/api/chatbot/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "bookbridgechatbotservice.onrender.com",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/chatbot/{everything}",
+      "UpstreamHttpMethod": [
+        "Post",
+        "Get"
+      ],
+      "Priority": 6,
+      "Key": "ChatbotService",
+      "SwaggerKey": "chatbot"
     }
   ],
   "SwaggerEndPoints": [
@@ -224,6 +242,17 @@
           "Name": "Review Service",
           "Version": "v1",
           "Url": "https://bookbrirdgereviewservice.onrender.com/swagger/v1/swagger.json",
+          "TakeServersNameAndPortFromConfig": true
+        }
+      ]
+    },
+    {
+      "Key": "chatbot",
+      "Config": [
+        {
+          "Name": "Chatbot Service",
+          "Version": "v1",
+          "Url": "https://bookbridgechatbotservice.onrender.com/swagger/v1/swagger.json",
           "TakeServersNameAndPortFromConfig": true
         }
       ]
