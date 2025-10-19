@@ -18,12 +18,12 @@ builder.Services.AddSwaggerGen(c =>
 });
 builder.Services.AddSwaggerForOcelot(builder.Configuration);
 
-// ✅ CORS phải đăng ký trước khi Build
+// CORS đăng ký trước khi Build
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontEnd", policy =>
     {
-        policy.WithOrigins("https://5b834516.bookbridge-5ju.pages.dev")
+        policy.WithOrigins("https://e00d56ad.bookbridge-5ju.pages.dev")
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
