@@ -170,7 +170,7 @@
         {
           "Name": "Review Service",
           "Version": "v1",
-          "Url": "https://bookbrirdgereviewservicev2.onrender.com/swagger/v1/swagger.json",
+          "Url": "https://bookbridgereviewservicev2.onrender.com/swagger/v1/swagger.json",
           "TakeServersNameAndPortFromConfig": true
         }
       ]
