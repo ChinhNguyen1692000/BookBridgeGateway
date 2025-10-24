@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
 // **QUAN TRỌNG: Thêm Controller Service**
-builder.Services.AddControllers(); 
+// builder.Services.AddControllers(); 
 
 // Đăng ký Ocelot, Swagger, SwaggerForOcelot
 builder.Services.AddOcelot();
@@ -46,13 +46,13 @@ app.UseDeveloperExceptionPage();
 app.UseRouting();
 app.UseCors("AllowFrontEnd");
 
-app.MapGet("/", () => Results.Ok("API Gateway is running. Use /swagger/docs to see available documentation."));
+// app.MapGet("/", () => Results.Ok("API Gateway is running. Use /swagger/docs to see available documentation."));
 
 // 1. Health check endpoint (Render dùng để kiểm tra)
-app.MapGet("/api/healthz", () => Results.Ok("Healthy"));
+// app.MapGet("/api/healthz", () => Results.Ok("Healthy"));
 
 // 2. Controllers — phải đặt trước Ocelot
-app.MapControllers();
+// app.MapControllers();
 
 // 3. SwaggerForOcelot UI (nên nằm sau controllers để tránh conflict)
 app.UseSwaggerForOcelotUI(opt =>
