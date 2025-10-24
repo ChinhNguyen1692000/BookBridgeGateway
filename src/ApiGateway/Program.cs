@@ -9,9 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Load Ocelot config
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
-// Healthcheck service (Không cần thiết cho Controller, nhưng giữ lại)
-builder.Services.AddHealthChecks(); 
-
 // **QUAN TRỌNG: Thêm Controller Service**
 builder.Services.AddControllers(); 
 
@@ -47,21 +44,21 @@ var app = builder.Build();
 
 app.UseDeveloperExceptionPage();
 app.UseRouting();
-
-// Dùng CORS trước khi Ocelot
 app.UseCors("AllowFrontEnd");
 
-// **QUAN TRỌNG: Map Controllers trước Ocelot**
-// Controller API có độ ưu tiên cao hơn Minimal API và Ocelot.
+// 1. Health check endpoint (Render dùng để kiểm tra)
+app.MapGet("/api/healthz", () => Results.Ok("Healthy"));
+
+// 2. Controllers — phải đặt trước Ocelot
 app.MapControllers();
 
-// Swagger UI
+// 3. SwaggerForOcelot UI (nên nằm sau controllers để tránh conflict)
 app.UseSwaggerForOcelotUI(opt =>
 {
     opt.PathToSwaggerGenerator = "/swagger/docs";
 });
 
-// Ocelot middleware
+// 4. Cuối cùng — Ocelot gateway middleware
 await app.UseOcelot();
 
 app.Run();
