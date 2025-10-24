@@ -1,6 +1,17 @@
 {
   "Routes": [
     {
+      "DownstreamPathTemplate": "/api/healthz",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        { "Host": "localhost", "Port": 10000 }
+      ],
+      "UpstreamPathTemplate": "/api/healthz",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Priority": 9999,
+      "Key": "HealthCheckRoute"
+    },
+    {
       "DownstreamPathTemplate": "/api/auth/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [

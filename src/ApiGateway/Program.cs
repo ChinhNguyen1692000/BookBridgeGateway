@@ -48,6 +48,7 @@ app.UseRouting();
 app.UseCors("AllowFrontEnd");
 
 app.MapGet("/api/healthz", () => "Healthy").ExcludeFromDescription();
+app.MapControllers();
 
 // Swagger UI
 app.UseSwaggerForOcelotUI(opt =>
