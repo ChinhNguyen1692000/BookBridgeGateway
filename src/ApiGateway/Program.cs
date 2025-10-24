@@ -59,6 +59,7 @@ app.UseSwaggerForOcelotUI(opt =>
 });
 
 // 4. Cuối cùng — Ocelot gateway middleware
-await app.UseOcelot();
+// await app.UseOcelot();
+_ = app.UseOcelot();
 
 app.Run();
