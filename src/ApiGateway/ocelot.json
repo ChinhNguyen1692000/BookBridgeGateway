@@ -1,6 +1,42 @@
 {
   "Routes": [
     {
+      "DownstreamPathTemplate": "/",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/healthz",
+      "UpstreamHttpMethod": [ "Get", "Head" ],
+      "Priority": 0,
+      "Key": "HealthCheck",
+      "DownstreamHostAndPorts": [],
+      "AddHeadersToRequest": {
+        "X-Health-Check": "true"
+      },
+      "LoadBalancerOptions": {
+        "Type": "NoLoadBalancer"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "NoAuth"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/",
+      "UpstreamHttpMethod": [ "Get", "Head" ],
+      "Priority": 0,
+      "Key": "RootUrl",
+      "DownstreamHostAndPorts": [],
+      "AddHeadersToRequest": {
+        "X-Root-Check": "true"
+      },
+      "LoadBalancerOptions": {
+        "Type": "NoLoadBalancer"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "NoAuth"
+      }
+    },
+    {
       "DownstreamPathTemplate": "/api/auth/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [

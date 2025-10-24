@@ -9,13 +9,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Load Ocelot config
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
-// **QUAN TRỌNG: Thêm Controller Service**
-// builder.Services.AddControllers(); 
+// Bật Endpoint API Explorer để hỗ trợ MapGet
+builder.Services.AddEndpointsApiExplorer();
+
+// Đăng ký Health Checks
+builder.Services.AddHealthChecks(); 
 
 // Đăng ký Ocelot, Swagger, SwaggerForOcelot
 builder.Services.AddOcelot();
-// Các service khác giữ nguyên...
-builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
@@ -28,9 +29,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontEnd", policy =>
     {
         policy.WithOrigins("https://e00d56ad.bookbridge-5ju.pages.dev",
-          "http://localhost:5173")
-              .AllowAnyMethod()
-              .AllowAnyHeader();
+            "http://localhost:5173")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
     });
 });
 
@@ -42,26 +43,31 @@ builder.WebHost.ConfigureKestrel(options =>
 
 var app = builder.Build();
 
+// Sử dụng Development Exception Page
 app.UseDeveloperExceptionPage();
+
+// 1. Cấu hình Health check endpoint (Render dùng để kiểm tra /healthz)
+// Điều này sẽ xử lý các yêu cầu tới /healthz mà KHÔNG cần qua Ocelot
 app.UseRouting();
 app.UseCors("AllowFrontEnd");
 
-// app.MapGet("/", () => Results.Ok("API Gateway is running. Use /swagger/docs to see available documentation."));
+// Map Health Check và Root URL endpoint
+app.UseEndpoints(endpoints =>
+{
+    // Cấu hình để xử lý /healthz (match với cấu hình Render và route trong ocelot.json)
+    endpoints.MapHealthChecks("/healthz"); 
+    // Xử lý root URL
+    endpoints.MapGet("/", () => Results.Ok("API Gateway is running. Use /swagger/docs to see available documentation."));
+});
 
-// 1. Health check endpoint (Render dùng để kiểm tra)
-// app.MapGet("/api/healthz", () => Results.Ok("Healthy"));
 
-// 2. Controllers — phải đặt trước Ocelot
-// app.MapControllers();
-
-// 3. SwaggerForOcelot UI (nên nằm sau controllers để tránh conflict)
+// 2. SwaggerForOcelot UI
 app.UseSwaggerForOcelotUI(opt =>
 {
     opt.PathToSwaggerGenerator = "/swagger/docs";
 });
 
-// 4. Cuối cùng — Ocelot gateway middleware
+// 3. Cuối cùng — Ocelot gateway middleware
 await app.UseOcelot();
-
 
 app.Run();
