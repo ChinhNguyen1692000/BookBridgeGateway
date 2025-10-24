@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Load Ocelot config
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
-// Bật Endpoint API Explorer để hỗ trợ MapGet
+// Bật Endpoint API Explorer
 builder.Services.AddEndpointsApiExplorer();
 
 // Đăng ký Health Checks
@@ -43,31 +43,31 @@ builder.WebHost.ConfigureKestrel(options =>
 
 var app = builder.Build();
 
-// Sử dụng Development Exception Page
 app.UseDeveloperExceptionPage();
 
-// 1. Cấu hình Health check endpoint (Render dùng để kiểm tra /healthz)
-// Điều này sẽ xử lý các yêu cầu tới /healthz mà KHÔNG cần qua Ocelot
+// 1. Cấu hình các Middleware cơ bản
 app.UseRouting();
 app.UseCors("AllowFrontEnd");
 
-// Map Health Check và Root URL endpoint
+// 2. Map Health Check và Root URL endpoint (sẽ bắt các yêu cầu /healthz và /)
+// Phải được đặt SAU app.UseRouting() và TRƯỚC Ocelot
 app.UseEndpoints(endpoints =>
 {
-    // Cấu hình để xử lý /healthz (match với cấu hình Render và route trong ocelot.json)
+    // Cấu hình Health Check cho Render (hoạt động độc lập với Ocelot)
     endpoints.MapHealthChecks("/healthz"); 
-    // Xử lý root URL
-    endpoints.MapGet("/", () => Results.Ok("API Gateway is running. Use /swagger/docs to see available documentation."));
+    // Xử lý Root URL để loại bỏ lỗi HEAD / và GET /
+    endpoints.MapGet("/", () => Results.Ok("API Gateway is running. Check /swagger/docs for API details."));
 });
 
 
-// 2. SwaggerForOcelot UI
+// 3. SwaggerForOcelot UI
 app.UseSwaggerForOcelotUI(opt =>
 {
     opt.PathToSwaggerGenerator = "/swagger/docs";
 });
 
-// 3. Cuối cùng — Ocelot gateway middleware
-await app.UseOcelot();
+// 4. Cuối cùng — Ocelot gateway middleware
+// Ocelot sẽ chỉ xử lý các yêu cầu không được MapGet/MapHealthChecks xử lý ở trên
+await app.UseOcelot(); // Dòng này là dòng 71
 
 app.Run();
