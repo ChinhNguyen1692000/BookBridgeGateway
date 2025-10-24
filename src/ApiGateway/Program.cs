@@ -9,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Load Ocelot config
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
+// Healthcheck
+builder.Services.AddHealthChecks();
+
 // Đăng ký Ocelot, Swagger, SwaggerForOcelot
 builder.Services.AddOcelot();
 builder.Services.AddEndpointsApiExplorer();
@@ -44,7 +47,7 @@ app.UseRouting();
 // Dùng CORS trước khi Ocelot
 app.UseCors("AllowFrontEnd");
 
-app.MapControllers();
+app.MapHealthChecks("/api/healthz");
 
 // Swagger UI
 app.UseSwaggerForOcelotUI(opt =>
