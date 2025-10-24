@@ -47,7 +47,7 @@ app.UseRouting();
 app.UseCors("AllowFrontEnd");
 
 // 1. Health check endpoint (Render dùng để kiểm tra)
-// app.MapGet("/api/healthz", () => Results.Ok("Healthy"));
+app.MapGet("/api/healthz", () => Results.Ok("Healthy"));
 
 // 2. Controllers — phải đặt trước Ocelot
 app.MapControllers();
