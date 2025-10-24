@@ -47,7 +47,7 @@ app.UseRouting();
 // Dùng CORS trước khi Ocelot
 app.UseCors("AllowFrontEnd");
 
-app.MapHealthChecks("/api/healthz");
+app.MapGet("/api/healthz", () => "Healthy").ExcludeFromDescription();
 
 // Swagger UI
 app.UseSwaggerForOcelotUI(opt =>
