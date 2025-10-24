@@ -46,6 +46,8 @@ app.UseDeveloperExceptionPage();
 app.UseRouting();
 app.UseCors("AllowFrontEnd");
 
+app.MapGet("/", () => Results.Ok("API Gateway is running. Use /swagger/docs to see available documentation."));
+
 // 1. Health check endpoint (Render dùng để kiểm tra)
 app.MapGet("/api/healthz", () => Results.Ok("Healthy"));
 

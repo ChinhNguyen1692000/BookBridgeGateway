@@ -4,7 +4,7 @@
       "DownstreamPathTemplate": "/api/auth/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        { "Host": "bookbridgeuserserviceV2.onrender.com", "Port": 443 }
+        { "Host": "bookbridgeuserservicev2.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/auth/{everything}",
       "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
@@ -16,7 +16,7 @@
       "DownstreamPathTemplate": "/api/Book/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        { "Host": "bookbridgebookserviceV2.onrender.com", "Port": 443 }
+        { "Host": "bookbridgebookservicev2.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/books/book/{everything}",
       "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
@@ -28,7 +28,7 @@
       "DownstreamPathTemplate": "/api/BookImage/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        { "Host": "bookbridgebookserviceV2.onrender.com", "Port": 443 }
+        { "Host": "bookbridgebookservicev2.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/books/image/{everything}",
       "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
@@ -40,7 +40,7 @@
       "DownstreamPathTemplate": "/api/BookType/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        { "Host": "bookbridgebookserviceV2.onrender.com", "Port": 443 }
+        { "Host": "bookbridgebookservicev2.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/books/type/{everything}",
       "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete", "Patch" ],
@@ -52,7 +52,7 @@
       "DownstreamPathTemplate": "/api/chatbot/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        { "Host": "bookbridgebookserviceV2.onrender.com", "Port": 443 }
+        { "Host": "bookbridgebookservicev2.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/books/chatbot/{everything}",
       "UpstreamHttpMethod": [ "Post", "Get" ],
@@ -64,7 +64,7 @@
       "DownstreamPathTemplate": "/api/bookstores/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        { "Host": "bookbridgebookstoreserviceV2.onrender.com", "Port": 443 }
+        { "Host": "bookbridgebookstoreservicev2.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/bookstores/{everything}",
       "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
@@ -76,7 +76,7 @@
       "DownstreamPathTemplate": "/api/orders/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        { "Host": "bookbridgeorderserviceV2.onrender.com", "Port": 443 }
+        { "Host": "bookbridgeorderservicev2.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/orders/{everything}",
       "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
@@ -88,7 +88,7 @@
       "DownstreamPathTemplate": "/api/cart/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        { "Host": "bookbridgecartserviceV2.onrender.com", "Port": 443 }
+        { "Host": "bookbridgecartservicev2.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/cart/{everything}",
       "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
@@ -100,7 +100,7 @@
       "DownstreamPathTemplate": "/api/review/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
-        { "Host": "bookbrirdgereviewserviceV2.onrender.com", "Port": 443 }
+        { "Host": "bookbridgereviewservicev2.onrender.com", "Port": 443 }
       ],
       "UpstreamPathTemplate": "/gateway/review/{everything}",
       "UpstreamHttpMethod": [ "Post", "Get", "Put", "Delete" ],
@@ -116,7 +116,7 @@
         {
           "Name": "Auth Service",
           "Version": "v1",
-          "Url": "https://bookbridgeuserserviceV2.onrender.com/swagger/v1/swagger.json"
+          "Url": "https://bookbridgeuserservicev2.onrender.com/swagger/v1/swagger.json"
         }
       ]
     },
@@ -126,7 +126,7 @@
         {
           "Name": "Book Service",
           "Version": "v1",
-          "Url": "https://bookbridgebookserviceV2.onrender.com/swagger/v1/swagger.json",
+          "Url": "https://bookbridgebookservicev2.onrender.com/swagger/v1/swagger.json",
           "TakeServersNameAndPortFromConfig": true
         }
       ]
@@ -137,7 +137,7 @@
         {
           "Name": "Bookstore Service",
           "Version": "v1",
-          "Url": "https://bookbridgebookstoreserviceV2.onrender.com/swagger/v1/swagger.json",
+          "Url": "https://bookbridgebookstoreservicev2.onrender.com/swagger/v1/swagger.json",
           "TakeServersNameAndPortFromConfig": true
         }
       ]
@@ -148,7 +148,7 @@
         {
           "Name": "Order Service",
           "Version": "v1",
-          "Url": "https://bookbridgeorderserviceV2.onrender.com/swagger/v1/swagger.json",
+          "Url": "https://bookbridgeorderservicev2.onrender.com/swagger/v1/swagger.json",
           "TakeServersNameAndPortFromConfig": true
         }
       ]
@@ -159,7 +159,7 @@
         {
           "Name": "Cart Service",
           "Version": "v1",
-          "Url": "https://bookbridgecartserviceV2.onrender.com/swagger/v1/swagger.json",
+          "Url": "https://bookbridgecartservicev2.onrender.com/swagger/v1/swagger.json",
           "TakeServersNameAndPortFromConfig": true
         }
       ]
@@ -170,13 +170,13 @@
         {
           "Name": "Review Service",
           "Version": "v1",
-          "Url": "https://bookbrirdgereviewserviceV2.onrender.com/swagger/v1/swagger.json",
+          "Url": "https://bookbridgereviewservicev2.onrender.com/swagger/v1/swagger.json",
           "TakeServersNameAndPortFromConfig": true
         }
       ]
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "https://bookbridgegatewayV2.onrender.com"
+    "BaseUrl": "https://bookbridgegatewayv2.onrender.com"
   }
 }
