@@ -44,6 +44,8 @@ app.UseRouting();
 // Dùng CORS trước khi Ocelot
 app.UseCors("AllowFrontEnd");
 
+app.MapControllers();
+
 // Swagger UI
 app.UseSwaggerForOcelotUI(opt =>
 {
